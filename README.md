@@ -18,6 +18,12 @@ to setup the required infrastructure in your AWS account.
 aws lambda invoke --function-name publishLinkToSNS lambda_output_publisher.txt
 ```
 
+## Download result files from s3
+
+```shell
+aws s3 sync s3://preprocessed-serverless ./results_preprocessed_s3
+```
+
 ## Cleanup
 
 Use
