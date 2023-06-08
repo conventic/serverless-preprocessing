@@ -3,3 +3,4 @@
 *.zip
 .DS_Store
 lambda_output_publisher.txt
+results_preprocessed_s3/
