@@ -23,34 +23,14 @@ resource "aws_sns_topic" "preprocessor" {
         "SNS:ListSubscriptionsByTopic",
         "SNS:Publish"
       ],
-      "Resource": "arn:aws:sns:eu-central-1:710731193510:preprocessor",
+      "Resource": "*",
       "Condition": {
         "StringEquals": {
-          "AWS:SourceOwner": "710731193510"
+          "AWS:SourceOwner": "${data.aws_caller_identity.current.account_id}"
         }
       }
     }
   ]
 }
 EOF
-
-#   delivery_policy = <<EOF
-# {
-#   "http": {
-#     "defaultHealthyRetryPolicy": {
-#       "minDelayTarget": 20,
-#       "maxDelayTarget": 20,
-#       "numRetries": 3,
-#       "numMaxDelayRetries": 0,
-#       "numNoDelayRetries": 0,
-#       "numMinDelayRetries": 0,
-#       "backoffFunction": "linear"
-#     },
-#     "disableSubscriptionOverrides": false,
-#     "defaultRequestPolicy": {
-#       "headerContentType": "text/plain; charset=UTF-8"
-#     }
-#   }
-# }
-# EOF
 }

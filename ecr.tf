@@ -29,7 +29,7 @@
 #       ],
 #       "Condition": {
 #         "StringLike": {
-#           "aws:sourceArn": "arn:aws:lambda:eu-central-1:710731193510:function:*"
+#           "aws:sourceArn": "arn:aws:lambda:${data.aws_region.current.name}:${data.aws_caller_identity.current.account_id}:function:*"
 #         }
 #       }
 #     }
