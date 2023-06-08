@@ -15,7 +15,7 @@ to setup the required infrastructure in your AWS account.
 ## Invoke publisher lambda function
 
 ```shell
-aws lambda invoke --function-name publishLinkToSNS
+aws lambda invoke --function-name publishLinkToSNS lambda_output_publisher.txt
 ```
 
 ## Cleanup
@@ -42,6 +42,7 @@ terraform import aws_sns_topic_subscription.snsPreprocessor arn:aws:sns:eu-centr
 
 terraform import aws_lambda_function.publisher arn:aws:lambda:eu-central-1:710731193510:function:publishLinkToSNS
 terraform import aws_iam_role.publish_to_sns publishToSNS
+terraform import aws_iam_role.preprocessLambdaRole preprocessLambdaRole
 ```
 
 ## Manual update of lambda function via zip file

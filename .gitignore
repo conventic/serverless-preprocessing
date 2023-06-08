@@ -2,3 +2,4 @@
 .terraform.lock.hcl
 *.zip
 .DS_Store
+lambda_output_publisher.txt
