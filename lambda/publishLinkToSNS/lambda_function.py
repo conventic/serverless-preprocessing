@@ -5,7 +5,10 @@ import urllib
 import boto3
 
 print('Loading message function...')
-topc_arn = 'arn:aws:sns:eu-central-1:710731193510:preprocessor'
+AWS_ACCOUNT_ID = '710731193510'
+AWS_REGION = 'eu-central-1'
+SNS_TOPIC_NAME = 'preprocessor'
+topc_arn = "arn:aws:sns:{}:{}:{}".format(AWS_REGION, AWS_ACCOUNT_ID, SNS_TOPIC_NAME)
 sns = boto3.client('sns')
 
 base_url = 'https://d37ci6vzurychx.cloudfront.net/trip-data/'
