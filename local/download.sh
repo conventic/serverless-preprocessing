@@ -1,5 +1,5 @@
 #!bash
-
+date
 wget https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2009-01.parquet &&\
 wget https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2009-02.parquet &&\
 wget https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2009-03.parquet &&\
@@ -168,3 +168,4 @@ wget https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2022-09.par
 wget https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2022-10.parquet &&\
 wget https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2022-11.parquet &&\
 wget https://d37ci6vzurychx.cloudfront.net/trip-data/yellow_tripdata_2022-12.parquet
+date
