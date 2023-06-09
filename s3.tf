@@ -6,7 +6,7 @@ resource "aws_s3_bucket" "preprocessed_serverless" {
 
 # resource "null_resource" "zip_file" {
 #   provisioner "local-exec" {
-#     command = "(cd ./lambda/publishLinkToSNS && zip -r ../../publishLinkToSNS.zip lambda_function.py)"
+#     command = "(cd ./lambda_functions/publishLinkToSNS && zip -r ../../publishLinkToSNS.zip lambda_function.py)"
 #   }
 
 #   triggers = {

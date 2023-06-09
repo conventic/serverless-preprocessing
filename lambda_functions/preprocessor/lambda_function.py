@@ -1,10 +1,13 @@
 import sys
+import os
 import pyarrow as pa
 import pyarrow.parquet as pq
 import pandas as pd
 from smart_open import open
 import boto3
 # import s3fs
+
+is_local = False
 
 
 def handler(event, context):
@@ -23,6 +26,7 @@ def handler(event, context):
         # Read the data into a pandas dataframe
         df = parquet_file.read().to_pandas()
     else:
+        is_local = True
         file_path = url
         print('Read parquet file from local path {}'.format(file_path))
         df = pd.read_parquet(file_path, engine='pyarrow')
@@ -44,14 +48,19 @@ def handler(event, context):
     bucket = 'preprocessed-serverless'
     file_path = '2023/{}'.format(file_name)
 
-    # Set up the S3 file system
-    fs = pa.fs.S3FileSystem()
+    if is_local:
+        write_path = file_path  # Save to local file path
+        # Ensure directory exists
+        os.makedirs(os.path.dirname(file_path), exist_ok=True)
+    else:
+        # Set up the S3 file system
+        fs = pa.fs.S3FileSystem()
+        write_path = '{}/{}'.format(bucket, file_path)  # Save to S3 bucket
 
     # Open a PyArrow ParquetWriter object for the S3 file
-    writer = pq.ParquetWriter('{}/{}'.format(bucket, file_path), table.schema, filesystem=fs)
-
-    # Write the PyArrow table to the Parquet file
-    writer.write_table(table)
+    with pq.ParquetWriter(write_path, table.schema, filesystem=fs if not is_local else None) as writer:
+        # Write the PyArrow table to the Parquet file
+        writer.write_table(table)
 
     # Close the ParquetWriter object
     writer.close()

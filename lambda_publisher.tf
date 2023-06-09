@@ -2,7 +2,7 @@
 
 data "archive_file" "lambda" {
   type        = "zip"
-  source_file = "./lambda/publishLinkToSNS/lambda_function.py"
+  source_file = "./lambda_functions/publishLinkToSNS/lambda_function.py"
   output_path = "publishLinkToSNS.zip"
 }
 
