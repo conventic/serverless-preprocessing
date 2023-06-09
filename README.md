@@ -56,7 +56,7 @@ terraform import aws_iam_role.preprocessLambdaRole preprocessLambdaRole
 1. Package your code
 
     ```shell
-    (cd ./lambda/publishLinkToSNS && zip -r ../../publishLinkToSNS.zip lambda_function.py)
+    (cd ./lambda_functions/publishLinkToSNS && zip -r ../../publishLinkToSNS.zip lambda_function.py)
     ```
 
 2. Upload the code package to an S3 bucket
