@@ -70,3 +70,25 @@ terraform import aws_iam_role.preprocessLambdaRole preprocessLambdaRole
     ```shell
     aws lambda update-function-code --function-name publishLinkToSNS --s3-bucket preprocessed-serverless --s3-key publishLinkToSNS.zip
     ```
+
+## Demo commands
+
+### Local
+
+```shell
+cd local
+date
+. ./download.sh 
+python3 invoke_processor.py
+```
+
+### AWS
+
+```shell
+terraform plan
+date
+terraform apply
+aws lambda invoke --function-name publishLinkToSNS lambda_output_publisher.txt
+aws s3 sync s3://preprocessed-serverless ./results_preprocessed_s3
+terraform destroy
+```
