@@ -77,18 +77,33 @@ terraform import aws_iam_role.preprocessLambdaRole preprocessLambdaRole
 
 ```shell
 cd local
-date
 . ./download.sh 
 python3 invoke_processor.py
+```
+
+#### Clean up local
+
+```shell
+rm -rf *.parquet
 ```
 
 ### AWS
 
 ```shell
 terraform plan
-date
 terraform apply
 aws lambda invoke --function-name publishLinkToSNS lambda_output_publisher.txt
 aws s3 sync s3://preprocessed-serverless ./results_preprocessed_s3
 terraform destroy
+```
+
+- [Lambda](https://eu-central-1.console.aws.amazon.com/lambda/home?region=eu-central-1#/functions?sb=lastModified&so=DESCENDING)
+- [SNS](https://eu-central-1.console.aws.amazon.com/sns/v3/home?region=eu-central-1#/topics)
+- [S3](https://s3.console.aws.amazon.com/s3/buckets?region=eu-central-1&region=eu-central-1)
+
+#### Clean up AWS
+
+```shell
+terraform destroy
+rm -rf results_preprocessed_s3
 ```
