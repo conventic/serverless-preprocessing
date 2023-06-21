@@ -1,6 +1,12 @@
 # Efficient Serverless Data Preprocessing
 
-Based on [clemenspeters/ARIMA](https://github.com/clemenspeters/ARIMA/tree/main/aws_lambda_taxi_data/processor_external_data).
+Demo code for the meetup presentation on 14.06.2023:  
+<img src="./img/preprocessing.webp" alt="efficient serverless preprocessing"/>
+
+The meetup was live streamed on [LinkedIn](https://www.linkedin.com/events/effizientesserverlesspreprocess7069685925743583232) and YouTube.  
+Please find the [recording of the talk on YouTube](https://youtu.be/SW2-G8rDg9k).
+
+The code is based on [clemenspeters/ARIMA](https://github.com/clemenspeters/ARIMA/tree/main/aws_lambda_taxi_data/processor_external_data).
 
 ## Setup
 
